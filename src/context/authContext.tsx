@@ -11,6 +11,7 @@ import { getLocalItem, removeLocalItem } from "utils";
 import { LOAD_STATE, Pages } from "config";
 import { Axios } from "api";
 import { userRoute } from "utils/ApiRoutes";
+import login from "../pages/Login";
 
 const initState = {
   setUser: () => ({}),
@@ -46,6 +47,7 @@ export const AuthProvider: FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
+    if (!user) return;
     if (!Object.keys(user).length) return;
     //@ts-ignore
     if (!user?.isAvatarImageSet) return navigate(Pages.AVATAR);
@@ -65,6 +67,8 @@ export const AuthProvider: FC<Props> = ({ children }) => {
             Authorization: `Bearer ${getLocalItem("token")}`,
           }
         );
+        //@ts-ignore
+        if (data.code === "ERR_NETWORK") return navigate(Pages.LOGIN);
         //@ts-ignore
         if (data?.response?.data?.message === "Authorization token expired") {
           removeLocalItem("token");

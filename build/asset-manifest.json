@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pora_vipit.github.io/static/css/main.9a4204ce.css",
-    "main.js": "/pora_vipit.github.io/static/js/main.f5904651.js",
+    "main.js": "/pora_vipit.github.io/static/js/main.11f0e743.js",
     "static/media/slava.jpg": "/pora_vipit.github.io/static/media/slava.b7907021bfb3489c4fda.jpg",
     "static/media/send.png": "/pora_vipit.github.io/static/media/send.2e0fd2412823bcd8976a.png",
     "static/media/smile.png": "/pora_vipit.github.io/static/media/smile.ac400699f67aebe9b30d.png",
     "index.html": "/pora_vipit.github.io/index.html",
     "main.9a4204ce.css.map": "/pora_vipit.github.io/static/css/main.9a4204ce.css.map",
-    "main.f5904651.js.map": "/pora_vipit.github.io/static/js/main.f5904651.js.map"
+    "main.11f0e743.js.map": "/pora_vipit.github.io/static/js/main.11f0e743.js.map"
   },
   "entrypoints": [
     "static/css/main.9a4204ce.css",
-    "static/js/main.f5904651.js"
+    "static/js/main.11f0e743.js"
   ]
 }

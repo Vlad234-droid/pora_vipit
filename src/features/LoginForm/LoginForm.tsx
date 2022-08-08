@@ -63,7 +63,7 @@ const LoginForm: FC = () => {
         <form autoComplete="off">
           <div className="brand">
             <img src="" alt="" />
-            <h1>Pora Vipit Chat</h1>
+            <h1>Pora Vipit Chat!</h1>
           </div>
           <Input
             value={values["username"]}

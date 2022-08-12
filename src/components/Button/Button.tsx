@@ -22,6 +22,7 @@ export const Button: FC<Props> = ({ onClick, text, styles = null }) => {
 };
 
 const ButtonStyled = styled.button`
+  max-width: 300px;
   background: #997af0;
   color: white;
   padding: 1rem 2rem;

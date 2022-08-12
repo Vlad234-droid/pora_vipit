@@ -10,7 +10,7 @@ import { Button } from "components/Button";
 
 import { useAuthContainer } from "context/authContext";
 import { loginRouter } from "utils/ApiRoutes";
-import { removeLocalItem, setLocalItem, toastProps } from "utils";
+import { removeLocalItem, setLocalItem, toastProps, devices } from "utils";
 import { Pages } from "config";
 import "react-toastify/dist/ReactToastify.css";
 import { loginSchema } from "./config";
@@ -49,7 +49,7 @@ const LoginForm: FC = () => {
         // @ts-ignore
         setUser(data.user);
         setLocalItem("token", data.token);
-        navigate(Pages.BASE);
+        return navigate(`/${Pages.CHAT}`, { state: { login: true } });
       } catch (e) {
         removeLocalItem("token");
         navigate(Pages.BASE);
@@ -62,7 +62,6 @@ const LoginForm: FC = () => {
       <FormContainer>
         <form autoComplete="off">
           <div className="brand">
-            <img src="" alt="" />
             <h1>Pora Vipit Chat!</h1>
           </div>
           <Input
@@ -128,15 +127,17 @@ const FormContainer = styled.div`
     h1 {
       color: white;
       text-transform: uppercase;
+      font-size: clamp(18px, 24px, 28px);
     }
   }
   form {
+    width: 600px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background: #00000076;
+    background: var(--color-black);
     border-radius: 2rem;
-    padding: 3rem 5rem;
+    padding: 2.5rem 4rem;
   }
   button {
     background: #997af0;
@@ -149,6 +150,7 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     transition: background 0.3s ease;
+    margin: auto;
     &:hover {
       background: #3e0eff;
     }
@@ -158,13 +160,34 @@ const FormContainer = styled.div`
       cursor: default;
     }
   }
+
   span {
     color: white;
+    text-align: center;
     text-transform: uppercase;
     a {
       color: #4e0eff;
       text-decoration: none;
       font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: ${devices.tablet}) {
+    form {
+      width: 100%;
+      max-width: 560px;
+      padding: 1.5rem 2.5rem;
+    }
+  }
+  @media (max-width: ${devices.mobile}) {
+    form {
+      padding: 1rem 2rem;
+    }
+    .brand {
+      h1 {
+        margin-top: 12px;
+      }
     }
   }
 `;

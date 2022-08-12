@@ -68,7 +68,7 @@ const CloseLine = styled.div`
   position: absolute;
   top: -2px;
   right: 10px;
-  background: #997af0;
+  background: var(--color-violet);
   width: 4px;
   height: 32px;
   border-radius: 4px;
@@ -87,7 +87,6 @@ const EyeStyle = styled.div`
   position: absolute;
   right: 16px;
   bottom: 9px;
-  color: red;
   cursor: pointer;
   width: 26px;
 `;
@@ -100,7 +99,7 @@ const EyeImg = styled.img`
 const InputStyle = styled.input`
   background: transparent;
   padding: 1rem;
-  border: 0.1rem solid #4e0eff;
+  border: 0.1rem solid var(--color-light-blue);
   border-radius: 0.4rem;
   color: white;
   width: 100%;

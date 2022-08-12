@@ -6,6 +6,7 @@ import smile from "assets/img/smile.png";
 //@ts-ignore
 import send from "assets/img/send.png";
 import useEventListener from "hooks/useEventListener";
+import { devices } from "utils";
 
 type Props = {
   sendMessage: (message: string) => Promise<void>;
@@ -133,6 +134,9 @@ const Container = styled.div`
       img {
         width: 20px;
       }
+    }
+    @media screen and (max-width: ${devices.tablet}) {
+      padding: 0;
     }
   }
   .emoji-wrapper {

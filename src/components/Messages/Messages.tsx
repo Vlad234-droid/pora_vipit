@@ -142,7 +142,7 @@ const Container = styled.div`
       .content {
         overflow-wrap: break-word;
         padding: 0.7rem;
-        font-size: 1.1rem;
+        font-size: 21px;
         color: #d1d1d1;
         border-radius: 15px;
       }

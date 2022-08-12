@@ -13,7 +13,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { registrationSchema } from "./config";
 import { Pages } from "config";
 import { Axios } from "api";
-import { toastProps } from "utils";
+import { toastProps, devices } from "utils";
+//@ts-ignore
+import pora from "assets/img/pora.jpeg";
 
 const RegisterForm: FC = () => {
   const navigate = useNavigate();
@@ -43,7 +45,11 @@ const RegisterForm: FC = () => {
       //@ts-ignore
       toast.error(data.message, toastProps);
     }
-    if (data.status) navigate(`/${Pages.LOGIN}`);
+    if (data.status) {
+      return navigate(`/${Pages.LOGIN}`, {
+        state: { register: true },
+      });
+    }
   };
 
   return (
@@ -51,7 +57,6 @@ const RegisterForm: FC = () => {
       <FormContainer>
         <form autoComplete="off">
           <div className="brand">
-            <img src="" alt="" />
             <h1>Pora Vipit Chat</h1>
           </div>
           <Input
@@ -105,9 +110,10 @@ const RegisterForm: FC = () => {
             }}
             text={"Create User"}
           />
-          <span>
-            Already have an account ? <Link to={`/${Pages.LOGIN}`}>Login</Link>
-          </span>
+          <div className={"has-account"}>
+            <span>Already have an account ?</span>
+            <Link to={`/${Pages.LOGIN}`}>Login</Link>
+          </div>
         </form>
       </FormContainer>
       <ToastContainer />
@@ -123,29 +129,30 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background: #131324;
+  background-color: #131324;
   .brand {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
-    img {
-      height: 5rem;
-    }
+
     h1 {
       color: white;
       text-transform: uppercase;
+      font-size: clamp(18px, 24px, 28px);
     }
   }
   form {
+    width: 600px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background: #00000076;
+    background-color: var(--color-black);
     border-radius: 2rem;
-    padding: 3rem 5rem;
+    padding: 2.5rem 4rem;
   }
   button {
+    margin: auto;
     background: #997af0;
     color: white;
     padding: 1rem 2rem;
@@ -165,13 +172,39 @@ const FormContainer = styled.div`
       cursor: default;
     }
   }
-  span {
-    color: white;
-    text-transform: uppercase;
+  .has-account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    span {
+      color: white;
+      text-transform: uppercase;
+    }
     a {
       color: #4e0eff;
       text-decoration: none;
       font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: ${devices.tablet}) {
+    form {
+      width: 100%;
+      max-width: 560px;
+      padding: 1.5rem 2.5rem;
+    }
+  }
+  @media (max-width: ${devices.mobile}) {
+    form {
+      padding: 1rem 2rem;
+    }
+    .brand {
+      h1 {
+        margin-top: 12px;
+      }
     }
   }
 `;

@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import LogOut from "components/LogOut";
 import ChatInput from "components/ChatInput";
 import Messages from "components/Messages";
 import { Axios } from "api";
 import { sendMessageRouter } from "utils/ApiRoutes";
 import { useAuthContainer } from "context/authContext";
+import { devices } from "utils";
 
 type Props = {
   chat: {
@@ -76,7 +76,6 @@ const ChatContainer: FC<Props> = ({ chat, socket }) => {
             <h3>{chat.username}</h3>
           </div>
         </div>
-        <LogOut />
       </div>
 
       <Messages
@@ -127,6 +126,12 @@ const Container = styled.div`
         }
       }
     }
+    @media screen and (max-width: ${devices.tablet}) {
+      padding: 2px 5px;
+    }
+  }
+  @media screen and (max-width: ${devices.tablet}) {
+    width: 100%;
   }
 `;
 

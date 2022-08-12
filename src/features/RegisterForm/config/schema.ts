@@ -27,7 +27,7 @@ export const registrationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email format")
     .required("Required")
-    .max(30, "Email must contain less than 15 characters"),
+    .max(30, "Email must contain less than 30 characters"),
   password: Yup.string()
     .required("Password is required")
     .min(

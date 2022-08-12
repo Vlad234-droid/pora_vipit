@@ -19,7 +19,12 @@ const LogOut = () => {
     <Button
       text={"Log Out"}
       onClick={handleLogOut}
-      styles={{ padding: "0.5rem", fontSize: "0.6rem" }}
+      styles={{
+        padding: "0.5rem",
+        maxWidth: "150px",
+        fontSize: "18px",
+        width: "100%",
+      }}
     />
   );
 };

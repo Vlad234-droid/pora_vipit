@@ -5,17 +5,18 @@ import Contacts from "components/Contacts";
 import Welcome from "components/Welcome";
 import ChatContainer from "components/ChatContainer";
 import Loader from "components/Loader";
-import { useAuthContainer } from "context/authContext";
 import { LOAD_STATE } from "config";
+import { devices } from "utils";
 
 type Props = {
   contacts: Users | [];
   socket: any;
+  contactsLoading: LOAD_STATE | "";
 };
 
-export const Chat: FC<Props> = ({ contacts, socket }) => {
+export const Chat: FC<Props> = ({ contacts, socket, contactsLoading }) => {
   const [chat, setChat] = useState(null);
-  const { loading } = useAuthContainer();
+  const [toggle, setToggle] = useState<boolean>(true);
 
   const handleChangeChat = (chat) => {
     setChat(chat);
@@ -23,15 +24,19 @@ export const Chat: FC<Props> = ({ contacts, socket }) => {
 
   // @ts-ignore
   return (
-    <Container>
-      <div className="container">
+    <Container toggle={toggle}>
+      <div className={`container${toggle ? " toggle" : ""}`}>
         {/*@ts-ignore*/}
-        {loading === LOAD_STATE.LOADING ? (
+        {contactsLoading === LOAD_STATE.LOADING ? (
           <Loader />
         ) : (
-          <Contacts contacts={contacts} handleChangeChat={handleChangeChat} />
+          <Contacts
+            toggle={toggle}
+            setToggle={setToggle}
+            contacts={contacts}
+            handleChangeChat={handleChangeChat}
+          />
         )}
-        {/*// @ts-ignore*/}
         {!chat ? <Welcome /> : <ChatContainer chat={chat} socket={socket} />}
       </div>
     </Container>
@@ -47,15 +52,43 @@ const Container = styled.div`
   gap: 1rem;
   align-items: center;
   background: #131324;
+
   .container {
     border-radius: 20px;
     height: 85vh;
     width: 85vw;
-    background: #00000076;
+    max-width: 1640px;
+    background: var(--color-black);
     display: grid;
     grid-template-columns: 25% 75%;
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
+    box-shadow: 0.1px 0.1px 3px #9a86f3;
+    position: relative;
+    overflow: hidden;
+    &:after {
+      content: "beta";
+      position: absolute;
+      width: 80px;
+      height: 20px;
+      background: var(--color-violet);
+      top: 5px;
+      left: -22px;
+      text-align: center;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+      line-height: 24px;
+      transform: rotate(-45deg);
+    }
+    @media screen and (min-width: 769px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
+    }
+    @media screen and (max-width: ${devices.tablet}) {
+      width: 98vw;
+      display: flex;
+    }
+    @media screen and (max-width: ${devices.mobile}) {
+      height: 100vh;
     }
   }
 `;

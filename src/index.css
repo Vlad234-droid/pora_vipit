@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-black: #00000076;
+    --color-light-blue: #4e0eff;
+    --color-violet: #997af0;
+}
+
 body, button, input {
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -16,4 +22,9 @@ body{
     max-height: 100vh;
     max-width: 100vw;
     overflow: hidden;
+}
+
+.wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
 }

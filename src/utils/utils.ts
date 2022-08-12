@@ -23,3 +23,19 @@ export const toastProps = {
   draggable: true,
   theme: "dark",
 };
+
+const sizes = {
+  mobile: "476px",
+  tablet: "768px",
+  laptop: "1024px",
+  desktop: "1920px",
+};
+
+type Device = Record<"mobile" | "tablet" | "laptop" | "desktop", string>;
+
+export const devices: Device = {
+  mobile: sizes.mobile,
+  tablet: sizes.tablet,
+  laptop: sizes.laptop,
+  desktop: sizes.desktop,
+};

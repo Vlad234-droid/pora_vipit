@@ -68,11 +68,16 @@ export const AuthProvider: FC<Props> = ({ children }) => {
           }
         );
         //@ts-ignore
-        if (data.code === "ERR_NETWORK") return navigate(Pages.LOGIN);
+        if (!data.data) {
+          navigate(`/${Pages.LOGIN}`);
+          removeLocalItem("token");
+        }
+        //@ts-ignore
+        if (data.code === "ERR_NETWORK") return navigate(`/${Pages.LOGIN}`);
         //@ts-ignore
         if (data?.response?.data?.message === "Authorization token expired") {
           removeLocalItem("token");
-          navigate(Pages.LOGIN);
+          navigate(`/${Pages.LOGIN}`);
           setLoading("");
         } else {
           //@ts-ignore

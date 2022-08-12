@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
+import Div100vh from "react-div-100vh";
 import { Users } from "pages/Chat";
 import Contacts from "components/Contacts";
 import Welcome from "components/Welcome";
@@ -24,27 +25,35 @@ export const Chat: FC<Props> = ({ contacts, socket, contactsLoading }) => {
 
   // @ts-ignore
   return (
-    <Container toggle={toggle}>
-      <div className={`container${toggle ? " toggle" : ""}`}>
-        {/*@ts-ignore*/}
-        {contactsLoading === LOAD_STATE.LOADING ? (
-          <Loader />
-        ) : (
-          <Contacts
-            toggle={toggle}
-            setToggle={setToggle}
-            contacts={contacts}
-            handleChangeChat={handleChangeChat}
-          />
-        )}
-        {!chat ? <Welcome /> : <ChatContainer chat={chat} socket={socket} />}
-      </div>
-    </Container>
+    <Div100vh
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Container toggle={toggle}>
+        <div className={`container${toggle ? " toggle" : ""}`}>
+          {/*@ts-ignore*/}
+          {contactsLoading === LOAD_STATE.LOADING ? (
+            <Loader />
+          ) : (
+            <Contacts
+              toggle={toggle}
+              setToggle={setToggle}
+              contacts={contacts}
+              handleChangeChat={handleChangeChat}
+            />
+          )}
+          {!chat ? <Welcome /> : <ChatContainer chat={chat} socket={socket} />}
+        </div>
+      </Container>
+    </Div100vh>
   );
 };
 
 const Container = styled.div`
-  height: 100vh;
+  height: -webkit-fill-available !important;
   width: 100vw;
   display: flex;
   flex-direction: column;

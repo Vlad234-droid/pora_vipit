@@ -37,8 +37,8 @@ const Container = styled.div`
     display: block;
     height: 32px;
     width: 32px;
-    top: 20px;
-    left: 20px;
+    top: 11px;
+    left: 13px;
     z-index: 5;
     opacity: 0;
     cursor: pointer;
@@ -58,8 +58,8 @@ const Container = styled.div`
     height: 26px;
     width: 32px;
     position: absolute;
-    top: 17px;
-    left: 20px;
+    top: 14px;
+    left: 13px;
     z-index: 2;
     display: flex;
     flex-direction: column;

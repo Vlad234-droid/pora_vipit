@@ -1,12 +1,15 @@
 import React, { FC, useState } from "react";
-import { Users } from "pages/Chat";
-import { useAuthContainer } from "context/authContext";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAuthContainer } from "context/authContext";
 import LogOut from "components/LogOut";
+import { Button } from "components/Button";
 import Burger from "components/Burger";
 //@ts-ignore
 import logo from "assets/img/girl.jpeg";
 import { devices } from "utils";
+import { Pages } from "config";
+import { Users } from "pages/Chat";
 
 type Props = {
   contacts: Users | [];
@@ -23,6 +26,8 @@ const Contacts: FC<Props> = ({
 }) => {
   const { user } = useAuthContainer();
   const [selected, setSelected] = useState(undefined);
+
+  const navigate = useNavigate();
 
   const changeCurrentChat = (index, contact) => {
     if (toggle) setToggle(() => false);
@@ -65,6 +70,11 @@ const Contacts: FC<Props> = ({
           </div>
         </div>
         <LogOut />
+        <Button
+          styles={{ padding: "10px 5px", width: "100%", maxWidth: "150px" }}
+          onClick={() => navigate(`/${Pages.AVATAR}`)}
+          text={"Change avatar"}
+        />
       </div>
     </Container>
   );
@@ -77,6 +87,7 @@ const Container = styled.div`
   overflow: hidden;
   background: #080420;
   transition: width 0.5s ease;
+  box-shadow: 0 0 4px var(--color-light-blue);
   .brand {
     display: flex;
     align-items: center;
@@ -204,9 +215,9 @@ const Container = styled.div`
       }
     }
 
-    // @media screen and (max-width: ${devices.tablet}) {
-    //   flex-direction: column;
-    // }
+    @media screen and (max-width: ${devices.mobile}) {
+      gap: 10px;
+    }
   }
 
   @media screen and (min-width: 720px) and (max-width: 1080px) {

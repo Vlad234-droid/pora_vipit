@@ -66,7 +66,7 @@ const ChatInput: FC<Props> = ({ sendMessage }) => {
       {showEmoji && (
         //@ts-ignore
         <div ref={ref} className={"emoji-wrapper"}>
-          <Picker onEmojiClick={handleEmojiClick} />
+          <Picker onEmojiClick={handleEmojiClick} disableAutoFocus={true} />
         </div>
       )}
     </Container>
@@ -167,6 +167,10 @@ const Container = styled.div`
         background-color: #080420;
       }
     }
+  }
+  @media screen and (max-width: ${devices.mobile}) {
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 `;
 

@@ -11,7 +11,6 @@ import { getLocalItem, removeLocalItem } from "utils";
 import { LOAD_STATE, Pages } from "config";
 import { Axios } from "api";
 import { userRoute } from "utils/ApiRoutes";
-import login from "../pages/Login";
 
 const initState = {
   setUser: () => ({}),

@@ -25,7 +25,7 @@ const Contacts: FC<Props> = ({
   const [selected, setSelected] = useState(undefined);
 
   const changeCurrentChat = (index, contact) => {
-    if (!toggle) setToggle((prev) => !prev);
+    if (toggle) setToggle(() => false);
     setSelected(() => index);
     handleChangeChat(contact);
   };
@@ -35,8 +35,8 @@ const Contacts: FC<Props> = ({
         {/*<div className={"logo-wrapper"}>*/}
         {/*  /!*<img src={logo} alt={"image"} />*!/*/}
         {/*</div>*/}
-        {/*//@ts-ignore*/}
         <Burger onClick={() => setToggle((prev) => !prev)} toggle={toggle} />
+
         <h3>Pora vipit</h3>
       </div>
       <div className="contacts">
@@ -83,7 +83,7 @@ const Container = styled.div`
     justify-content: center;
     gap: 1rem;
     position: relative;
-    button {
+    .burger {
       display: none;
     }
 
@@ -103,13 +103,13 @@ const Container = styled.div`
       color: white;
       text-transform: uppercase;
       @media screen and (max-width: ${devices.tablet}) {
-        //display: ${({ toggle }) => (toggle ? "none" : "block")};
+        // display: ${({ toggle }) => (toggle ? "none" : "block")};
         display: none;
       }
     }
 
     @media screen and (max-width: ${devices.tablet}) {
-      button {
+      .burger {
         display: block;
       }
     }
@@ -170,7 +170,7 @@ const Container = styled.div`
     }
     @media screen and (max-width: ${devices.tablet}) {
       .username {
-        display: ${({ toggle }) => (toggle ? "none" : "block")};
+        display: ${({ toggle }) => (toggle ? "block" : "none")};
       }
     }
   }
@@ -219,11 +219,11 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: ${devices.tablet}) {
-    width: ${({ toggle }) => (toggle ? "20%" : "40vw")};
+    width: ${({ toggle }) => (toggle ? "40vw" : "20%")};
     min-width: 100px;
   }
   @media screen and (max-width: ${devices.mobile}) {
-    width: ${({ toggle }) => (toggle ? "10%" : "100%")};
+    width: ${({ toggle }) => (toggle ? "100%" : "10%")};
     min-width: 110px;
   }
 `;

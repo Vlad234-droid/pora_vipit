@@ -16,7 +16,7 @@ type Props = {
 
 export const Chat: FC<Props> = ({ contacts, socket, contactsLoading }) => {
   const [chat, setChat] = useState(null);
-  const [toggle, setToggle] = useState<boolean>(true);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   const handleChangeChat = (chat) => {
     setChat(chat);

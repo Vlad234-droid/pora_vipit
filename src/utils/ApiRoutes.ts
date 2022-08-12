@@ -1,5 +1,5 @@
-// export const host = "https://pora-vipit-back.herokuapp.com";
-export const host = "http://localhost:5001";
+export const host = "https://pora-vipit-back.herokuapp.com";
+// export const host = "http://localhost:5001";
 export const registerRouter = `${host}/api/auth/register`;
 export const loginRouter = `${host}/api/auth/login`;
 export const setAvatarRouter = `${host}/api/auth/avatar`;

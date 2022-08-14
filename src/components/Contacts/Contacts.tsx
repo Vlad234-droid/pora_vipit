@@ -83,7 +83,7 @@ const Contacts: FC<Props> = ({
 const Container = styled.div`
   border-radius: 20px;
   display: grid;
-  grid-template-rows: minmax(85px, 85px) 2fr 1fr;
+  grid-template-rows: minmax(85px, 85px) 3fr 1fr;
   overflow: hidden;
   background: #080420;
   transition: width 0.5s ease;

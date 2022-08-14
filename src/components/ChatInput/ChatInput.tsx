@@ -74,7 +74,6 @@ const ChatInput: FC<Props> = ({ sendMessage }) => {
 };
 
 const Container = styled.div`
-  margin-top: 20px;
   position: relative;
   display: inline-flex;
   align-items: center;

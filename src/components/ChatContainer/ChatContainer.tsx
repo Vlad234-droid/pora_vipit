@@ -93,6 +93,8 @@ const ChatContainer: FC<Props> = ({ chat, socket }) => {
 const Container = styled.div`
   padding: 1rem;
   position: relative;
+  display: inline-flex;
+  flex-direction: column;
   &:before {
     content: "";
     position: absolute;
@@ -114,8 +116,8 @@ const Container = styled.div`
       align-items: center;
       .avatar {
         img {
-          height: 100px;
-          width: 100px;
+          height: 70px;
+          width: 70px;
           object-fit: cover;
           border-radius: 50%;
         }

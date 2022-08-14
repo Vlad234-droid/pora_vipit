@@ -16,6 +16,7 @@ const Spinner = styled.div`
   width: 100px;
   height: 100px;
   animation: spin 2s linear infinite;
+  margin: 0 20px;
   @keyframes spin {
     0% {
       transform: rotate(0deg);

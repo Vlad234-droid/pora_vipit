@@ -83,7 +83,7 @@ const Contacts: FC<Props> = ({
 const Container = styled.div`
   border-radius: 20px;
   display: grid;
-  grid-template-rows: 10% 65% 25%;
+  grid-template-rows: minmax(85px, 85px) 2fr 1fr;
   overflow: hidden;
   background: #080420;
   transition: width 0.5s ease;
@@ -191,7 +191,8 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 35px;
+    gap: 15px;
+    padding: 4px;
     .info {
       display: flex;
       justify-content: space-around;

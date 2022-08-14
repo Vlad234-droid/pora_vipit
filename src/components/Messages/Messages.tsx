@@ -108,7 +108,7 @@ const Messages: FC<Props> = ({ chat, setMessages, messages, scrollRef }) => {
 };
 
 const Container = styled.div`
-  height: 80%;
+  flex-grow: 1;
   overflow: scroll;
   padding-bottom: 40px;
   &::-webkit-scrollbar {
